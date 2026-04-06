@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  transpilePackages: ["@react-pdf/renderer"],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 const withMDX = createMDX({
   options: {

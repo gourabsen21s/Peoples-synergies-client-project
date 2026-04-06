@@ -24,6 +24,7 @@
       "lib/*": ["./src/app/lib/*"],
       "home/*": ["./src/app/home/*"],
       "globals-css": ["./src/app/globals-css.ts"],
+      "resume-parser/*": ["./src/app/resume-parser/*"],
       "public/*": ["./public/*"]
     }
   },
