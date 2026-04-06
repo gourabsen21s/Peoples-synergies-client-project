@@ -13,10 +13,7 @@ export function Footer() {
     { name: "Contact", href: "/contact" },
   ];
 
-  const social = [
-    { name: "Xwitter", href: "https://x.com/ausrobdev" },
-    { name: "LinkedIn", href: "#" },
-  ];
+
 
   const insights = [
     { name: "Workforce Insights", href: "/workforce-insights" },
@@ -70,16 +67,7 @@ export function Footer() {
               </Link>
             </li>
           ))}
-          {social.map((item) => (
-            <li key={item.name}>
-              <Link
-                href={item.href}
-                className="flex items-center gap-0.5 font-medium transition-opacity hover:opacity-75"
-              >
-                {item.name} <ArrowUpRight className="size-4" />
-              </Link>
-            </li>
-          ))}
+
         </ul>
         <ul className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground mt-2">
           {insights.map((item) => (

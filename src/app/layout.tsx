@@ -121,7 +121,6 @@ export const metadata: Metadata = {
     description:
       "Peoples Synergies is a leading recruitment agency connecting top talent with industry-leading companies.",
     images: ["/og-image.jpg"],
-    creator: "@ausrobdev",
   },
 };
 

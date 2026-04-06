@@ -5,7 +5,7 @@ export interface ResumeProfile {
   url: string;
   summary: string;
   location: string;
-  socialLinks?: string[]; // Multiple links like LinkedIn, Portfolio, etc.
+
 }
 
 export interface ResumeWorkExperience {

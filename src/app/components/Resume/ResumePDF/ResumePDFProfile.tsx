@@ -41,48 +41,35 @@ export const ResumePDFProfile = ({
           gap: spacing["2"]
         }}
       >
-        {[...Object.entries(iconProps), ...(profile.socialLinks || []).map(link => (['social', link] as [string, string]))].map(([key, value], idx) => {
+        {Object.entries(iconProps).map(([key, value]) => {
           if (!value) return null;
-
-          let iconType = key as IconType;
-          if (key === "url" || key === "social") {
-            if (value.includes("github")) {
-              iconType = "url_github";
-            } else if (value.includes("linkedin")) {
-              iconType = "url_linkedin";
-            } else {
-              iconType = "url";
-            }
-          }
-
-          const src = value.startsWith("http") ? value : `https://${value}`;
-          const label = value.replace(/^https?:\/\//, '').replace(/^www\./, '');
-
-          const Wrapper = ({ children }: { children: React.ReactNode }) => {
-            let finalSrc = src;
-            if (key === "email") finalSrc = `mailto:${value}`;
-            if (key === "phone") finalSrc = `tel:${value.replace(/[^\d+]/g, "")}`;
-
-            return (
-              <ResumePDFLink src={finalSrc} isPDF={isPDF}>
-                {children}
-              </ResumePDFLink>
-            );
-          };
 
           return (
             <View
-              key={`${key}-${idx}`}
+              key={key}
               style={{
                 ...styles.flexRow,
                 alignItems: "center",
                 gap: spacing["1"],
               }}
             >
-              <ResumePDFIcon type={iconType} isPDF={isPDF} />
-              <Wrapper>
-                <ResumePDFText>{label}</ResumePDFText>
-              </Wrapper>
+              <ResumePDFIcon type={key as IconType} isPDF={isPDF} />
+              <ResumePDFLink
+                src={
+                  key === "email"
+                    ? `mailto:${value}`
+                    : key === "phone"
+                      ? `tel:${value.replace(/[^\d+]/g, "")}`
+                      : value.startsWith("http")
+                        ? value
+                        : `https://${value}`
+                }
+                isPDF={isPDF}
+              >
+                <ResumePDFText>
+                  {value.replace(/^https?:\/\//, "").replace(/^www\./, "")}
+                </ResumePDFText>
+              </ResumePDFLink>
             </View>
           );
         })}
